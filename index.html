@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi persona favorita 💛</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            overflow-x: hidden;
+        }
+        .romantic-font {
+            font-family: 'Dancing Script', cursive;
+        }
+        /* Animación de apertura de la caja */
+        .box-lid {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
+            transform-origin: top;
+        }
+        .open-lid .box-lid {
+            transform: translateY(-120px) rotateX(45deg);
+            opacity: 0;
+        }
+        .gift-container {
+            transition: all 0.8s ease-in-out;
+        }
+        .fade-out {
+            opacity: 0;
+            transform: scale(0.8);
+            pointer-events: none;
+            display: none;
+        }
+        .fade-in {
+            animation: fadeInBouquet 1.2s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes fadeInBouquet {
+            0% { opacity: 0; transform: translateY(40px) scale(0.9); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        /* Estilos detallados del ramo profesional */
+        .rose-cluster {
+            filter: drop-shadow(0 10px 15px rgba(217, 119, 6, 0.2));
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+
+    <!-- VISTA 1: LA CAJA DE REGALO SORPRESA -->
+    <div id="giftView" class="gift-container flex flex-col items-center justify-center text-center cursor-pointer select-none py-10" onclick="openGift()">
+        <div class="mb-6 animate-bounce">
+            <span class="text-6xl">🎁</span>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold text-amber-900 mb-3">Tienes un regalo especial</h1>
+        <p class="text-amber-800 text-lg mb-8 bg-amber-100/80 px-6 py-2 rounded-full shadow-sm border border-amber-200">
+            Haz clic aquí para abrirlo ✨
+        </p>
+
+        <!-- Simulación visual de la caja -->
+        <div class="relative w-48 h-44 md:w-56 md:h-52">
+            <!-- Tapa -->
+            <div class="box-lid absolute top-0 left-[-10px] right-[-10px] h-12 bg-amber-600 rounded-t-lg shadow-md flex items-center justify-center border-b-2 border-amber-700">
+                <div class="w-8 h-full bg-amber-400 opacity-80"></div>
+            </div>
+            <!-- Cuerpo de la caja -->
+            <div class="absolute top-12 bottom-0 left-0 right-0 bg-amber-500 rounded-b-xl shadow-xl flex items-center justify-center border-2 border-amber-600 overflow-hidden">
+                <div class="w-10 h-full bg-amber-400 opacity-90"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="text-white font-semibold tracking-wider text-sm bg-amber-600/60 px-3 py-1 rounded">ÁBREME</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VISTA 2: EL RAMO DE 15 ROSAS AMARILLAS (Oculto inicialmente) -->
+    <div id="bouquetView" class="fade-out flex flex-col items-center justify-center w-full max-w-md mx-auto text-center py-6">
+        
+        <!-- Dedicatoria Romántica -->
+        <div class="mb-6 bg-white/80 backdrop-blur-md p-5 rounded-2xl shadow-lg border border-amber-200 w-full">
+            <span class="text-amber-500 text-xl">🌻</span>
+            <h2 class="text-amber-900 font-semibold text-lg mb-1">Para mi persona favorita</h2>
+            <p class="romantic-font text-3xl md:text-4xl text-amber-800 leading-tight">
+                "Mi sol de todos los días, gracias por iluminar cada momento de mi vida con tu sonrisa."
+            </p>
+        </div>
+
+        <!-- El Ramo Profesional Integrado -->
+        <div class="relative flex flex-col items-center mt-2 rose-cluster">
+            
+            <!-- Cúpula de 15 Rosas Amarillas unidas armónicamente -->
+            <div class="relative w-72 h-44 z-20 flex justify-center items-end">
+                <!-- Capa trasera de rosas (fondo) -->
+                <div class="absolute flex space-x-1 bottom-16">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-300 shadow-md border border-amber-500"></div>
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-300 shadow-md border border-amber-500 -mb-2"></div>
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-200 shadow-md border border-amber-500 -mb-3"></div>
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-300 shadow-md border border-amber-500 -mb-2"></div>
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-300 shadow-md border border-amber-500"></div>
+                </div>
+                <!-- Capa media de rosas -->
+                <div class="absolute flex space-x-2 bottom-8 z-10">
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-yellow-400 to-amber-300 shadow-lg border border-amber-500"></div>
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-200 shadow-lg border border-amber-500 -mb-2"></div>
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-yellow-500 to-amber-300 shadow-lg border border-amber-500 -mb-3"></div>
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-200 shadow-lg border border-amber-500 -mb-2"></div>
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-yellow-400 to-amber-300 shadow-lg border border-amber-500"></div>
+                </div>
+                <!-- Capa frontal de rosas -->
+                <div class="absolute flex space-x-2 bottom-2 z-20">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-300 to-yellow-200 shadow-md border border-amber-400"></div>
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-yellow-400 to-amber-200 shadow-md border border-amber-400 -mb-1"></div>
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-300 shadow-md border border-amber-400 -mb-1"></div>
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-400 to-amber-200 shadow-md border border-amber-400"></div>
+                </div>
+            </div>
+
+            <!-- Cono de Envoltorio Profesional -->
+            <div class="relative w-64 h-56 bg-gradient-to-b from-amber-100 via-amber-200 to-amber-300 rounded-b-[3rem] shadow-2xl border-t-4 border-amber-400 z-10 overflow-hidden flex flex-col items-center pt-2">
+                <!-- Textura de pliegues en el papel -->
+                <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#b45309_1px,transparent_1px)] [background-size:12px_12px]"></div>
+                
+                <!-- Lazo / Moño elegante en la parte superior del cono -->
+                <div class="relative z-30 flex items-center justify-center mt-1">
+                    <div class="bg-red-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-md border border-red-700 tracking-wide uppercase">
+                        Con amor 💛
+                    </div>
+                </div>
+
+                <!-- Leyenda en el envoltorio -->
+                <div class="mt-auto mb-4 text-xs font-semibold text-amber-900 tracking-widest uppercase opacity-80">
+                    🌻 Ramo exclusivo de 15 Rosas Amarillas 🌻
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Botón para reiniciar la sorpresa si lo desea -->
+        <button onclick="resetGift()" class="mt-8 text-xs text-amber-800 underline hover:text-amber-900 cursor-pointer transition">
+            Volver a cerrar la caja
+        </button>
+    </div>
+
+    <script>
+        function openGift() {
+            const giftView = document.getElementById('giftView');
+            const bouquetView = document.getElementById('bouquetView');
+
+            // Activa animación de apertura en la caja
+            giftView.classList.add('open-lid');
+
+            setTimeout(() => {
+                giftView.classList.add('fade-out');
+                bouquetView.classList.remove('fade-out');
+                bouquetView.classList.add('fade-in');
+            }, 500);
+        }
+
+        function resetGift() {
+            const giftView = document.getElementById('giftView');
+            const bouquetView = document.getElementById('bouquetView');
+
+            bouquetView.classList.remove('fade-in');
+            bouquetView.classList.add('fade-out');
+
+            setTimeout(() => {
+                giftView.classList.remove('fade-out', 'open-lid');
+            }, 300);
+        }
+    </script>
+</body>
+</html>
