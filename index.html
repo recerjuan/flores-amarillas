@@ -9,7 +9,6 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            /* Fondo nocturno elegante para máximo contraste */
             background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #31102b 100%);
             min-height: 100vh;
             overflow-x: hidden;
@@ -43,57 +42,6 @@
             0% { opacity: 0; transform: translateY(40px) scale(0.9); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
-
-        /* Estilo mejorado para rosas con textura y relieve */
-        .real-rose {
-            position: relative;
-            background: radial-gradient(circle, #fde047 0%, #eab308 60%, #ca8a04 100%);
-            border-radius: 50%;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.6), inset 0 -4px 8px rgba(161, 98, 7, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 30;
-        }
-        /* Detalle espiral central */
-        .real-rose::after {
-            content: '';
-            position: absolute;
-            width: 55%;
-            height: 55%;
-            border: 2px dashed rgba(113, 63, 18, 0.3);
-            border-radius: 50%;
-            animation: spinSlow 15s linear infinite;
-        }
-        @keyframes spinSlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Estilo de los tallos y hojas integrados */
-        .rose-stem {
-            position: absolute;
-            bottom: -50px; /* Nacen desde dentro del envoltorio */
-            width: 4px;
-            height: 120px;
-            background: linear-gradient(to bottom, #166534, #15803d);
-            border-radius: 0 0 2px 2px;
-            z-index: 10;
-            transform-origin: bottom;
-        }
-        /* Hojas laterales en los tallos */
-        .rose-stem::before, .rose-stem::after {
-            content: '';
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background-color: #15803d;
-            border-radius: 2px 15px;
-            top: 30px;
-        }
-        .rose-stem::before { left: -6px; transform: rotate(-30deg); }
-        .rose-stem::after { right: -6px; transform: rotate(30deg); }
-
     </style>
 </head>
 <body class="flex flex-col items-center justify-center p-4">
@@ -124,73 +72,136 @@
         </div>
     </div>
 
-    <!-- VISTA 2: EL RAMO DE 15 ROSAS AMARILLAS PROFESIONAL (Oculto inicialmente) -->
-    <div id="bouquetView" class="fade-out flex flex-col items-center justify-center w-full max-w-md mx-auto text-center py-6">
+    <!-- VISTA 2: EL RAMO IDÉNTICO A TU REFERENCIA (Oculto inicialmente) -->
+    <div id="bouquetView" class="fade-out flex flex-col items-center justify-center w-full max-w-md mx-auto text-center py-4">
         
         <!-- Dedicatoria Romántica -->
-        <div class="mb-6 bg-slate-900/80 backdrop-blur-md p-5 rounded-2xl shadow-2xl border border-yellow-500/30 w-full">
-            <span class="text-yellow-400 text-2xl">🌻</span>
-            <h2 class="text-yellow-200 font-semibold text-base mb-1 tracking-wider uppercase">Para mi persona favorita</h2>
+        <div class="mb-4 bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl shadow-2xl border border-yellow-500/30 w-full">
+            <span class="text-yellow-400 text-xl">🌻</span>
+            <h2 class="text-yellow-200 font-semibold text-xs mb-1 tracking-wider uppercase">Para mi persona favorita</h2>
             <p class="romantic-font text-3xl md:text-4xl text-yellow-300 leading-tight drop-shadow">
                 "Mi sol de todos los días, gracias por iluminar cada momento de mi vida con tu sonrisa."
             </p>
         </div>
 
-        <!-- El Ramo Profesional Integrado con tallos y hojas -->
-        <div class="relative flex flex-col items-center mt-2">
-            
-            <!-- Capa visual de flores (Cúpula) -->
-            <div class="relative w-72 h-36 z-20 flex justify-center items-end">
-                <!-- Capa trasera (6 rosas) -->
-                <div class="absolute flex space-x-1 bottom-8">
-                    <div class="real-rose w-12 h-12"></div>
-                    <div class="real-rose w-14 h-14 -mb-1"></div>
-                    <div class="real-rose w-14 h-14 -mb-2"></div>
-                    <div class="real-rose w-14 h-14 -mb-1"></div>
-                    <div class="real-rose w-12 h-12"></div>
-                </div>
-                <!-- Capa frontal (5 rosas destacadas) -->
-                <div class="absolute flex space-x-2 bottom-1 z-10">
-                    <div class="real-rose w-14 h-14"></div>
-                    <div class="real-rose w-16 h-16"></div>
-                    <div class="real-rose w-16 h-16 -mb-1"></div>
-                    <div class="real-rose w-16 h-16"></div>
-                    <div class="real-rose w-14 h-14"></div>
-                </div>
-                <!-- (Total 11 rosas visibles en cúpula frontal, más 4 ocultas atrás haciendo volumen) -->
-            </div>
+        <!-- Ramo Estilizado Exacto a la Foto -->
+        <div class="relative flex flex-col items-center drop-shadow-2xl">
+            <svg viewBox="0 0 300 380" class="w-72 h-96">
+                <defs>
+                    <!-- Gradiente para el papel envoltorio (tono rosado/crema elegante como en tu foto) -->
+                    <linearGradient id="wrapperGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#fbcfe8" />
+                        <stop offset="50%" stop-color="#f472b6" />
+                        <stop offset="100%" stop-color="#db2777" />
+                    </linearGradient>
+                    <!-- Gradiente para el lazo -->
+                    <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#f43f5e" />
+                        <stop offset="50%" stop-color="#fb7185" />
+                        <stop offset="100%" stop-color="#f43f5e" />
+                    </linearGradient>
+                </defs>
 
-            <!-- TALLOS Y HOJAS: Ahora nacen desde el ramo hacia el cono -->
-            <div class="absolute top-28 left-1/2 -translate-x-1/2 w-20 h-40 z-10 flex justify-center">
-                <div class="rose-stem rotate-[-15deg] left-0"></div>
-                <div class="rose-stem rotate-[-7deg] left-3"></div>
-                <div class="rose-stem rotate-[0deg] left-7"></div>
-                <div class="rose-stem rotate-[7deg] right-7"></div>
-                <div class="rose-stem rotate-[15deg] right-0"></div>
-            </div>
-
-            <!-- Cono de Envoltorio Profesional -->
-            <div class="relative w-64 h-56 bg-gradient-to-b from-amber-900 via-amber-800 to-amber-950 rounded-b-[3rem] shadow-2xl border-t-4 border-yellow-500/50 z-10 overflow-hidden flex flex-col items-center pt-2">
-                <!-- Textura elegante del papel de regalo -->
-                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#fde047_1px,transparent_1px)] [background-size:14px_14px]"></div>
+                <!-- 1. El Cono de Envoltorio (Forma idéntica a tu imagen de referencia) -->
+                <path d="M 90,140 Q 150,130 210,140 L 180,310 Q 150,330 120,310 Z" fill="url(#wrapperGrad)" stroke="#be185d" stroke-width="2" />
                 
-                <!-- Moño / Lazo elegante -->
-                <div class="relative z-30 flex items-center justify-center mt-1">
-                    <div class="bg-yellow-400 text-yellow-950 text-xs font-bold px-4 py-1.5 rounded-full shadow-lg border border-yellow-200 tracking-wide uppercase">
-                        Con amor eterno 💛
-                    </div>
-                </div>
+                <!-- Líneas decorativas de doblez en el papel -->
+                <g stroke="#f472b6" stroke-width="1.5" opacity="0.6" fill="none">
+                    <path d="M 150,132 L 135,315" />
+                    <path d="M 150,132 L 165,315" />
+                    <path d="M 150,132 L 105,250" />
+                    <path d="M 150,132 L 195,250" />
+                </g>
 
-                <!-- Leyenda en el envoltorio -->
-                <div class="mt-auto mb-4 text-xs font-semibold text-yellow-200/90 tracking-widest uppercase">
-                    ✨ 15 Rosas Amarillas Exclusivas ✨
-                </div>
-            </div>
+                <!-- 2. Follaje verde esponjoso que sale de la parte superior del cono -->
+                <g fill="#22c55e" stroke="#15803d" stroke-width="1.5">
+                    <circle cx="110" cy="140" r="28" />
+                    <circle cx="130" cy="125" r="32" />
+                    <circle cx="150" cy="120" r="35" />
+                    <circle cx="170" cy="125" r="32" />
+                    <circle cx="190" cy="140" r="28" />
+                    <circle cx="100" cy="155" r="24" />
+                    <circle cx="200" cy="155" r="24" />
+                </g>
 
+                <!-- 3. Las 15 Rosas Amarillas compactas en la parte superior -->
+                <g>
+                    <!-- Función de mini rosa detallada y compacta -->
+                    <!-- Fila Trasera -->
+                    <circle cx="115" cy="125" r="14" fill="#ca8a04" />
+                    <circle cx="115" cy="125" r="11" fill="#eab308" />
+                    <circle cx="115" cy="125" r="7" fill="#facc15" />
+
+                    <circle cx="135" cy="115" r="15" fill="#ca8a04" />
+                    <circle cx="135" cy="115" r="12" fill="#eab308" />
+                    <circle cx="135" cy="115" r="8" fill="#fde047" />
+
+                    <circle cx="165" cy="115" r="15" fill="#ca8a04" />
+                    <circle cx="165" cy="115" r="12" fill="#eab308" />
+                    <circle cx="165" cy="115" r="8" fill="#fde047" />
+
+                    <circle cx="185" cy="125" r="14" fill="#ca8a04" />
+                    <circle cx="185" cy="125" r="11" fill="#eab308" />
+                    <circle cx="185" cy="125" r="7" fill="#facc15" />
+
+                    <!-- Fila Central -->
+                    <circle cx="95" cy="140" r="14" fill="#ca8a04" />
+                    <circle cx="95" cy="140" r="11" fill="#eab308" />
+                    <circle cx="95" cy="140" r="7" fill="#facc15" />
+
+                    <circle cx="120" cy="132" r="15" fill="#ca8a04" />
+                    <circle cx="120" cy="132" r="12" fill="#eab308" />
+                    <circle cx="120" cy="132" r="8" fill="#fde047" />
+
+                    <circle cx="150" cy="125" r="16" fill="#ca8a04" />
+                    <circle cx="150" cy="125" r="13" fill="#eab308" />
+                    <circle cx="150" cy="125" r="9" fill="#fef08a" />
+
+                    <circle cx="180" cy="132" r="15" fill="#ca8a04" />
+                    <circle cx="180" cy="132" r="12" fill="#eab308" />
+                    <circle cx="180" cy="132" r="8" fill="#fde047" />
+
+                    <circle cx="205" cy="140" r="14" fill="#ca8a04" />
+                    <circle cx="205" cy="140" r="11" fill="#eab308" />
+                    <circle cx="205" cy="140" r="7" fill="#facc15" />
+
+                    <!-- Fila Frontal (Las más destacadas) -->
+                    <circle cx="105" cy="155" r="14" fill="#ca8a04" />
+                    <circle cx="105" cy="155" r="11" fill="#eab308" />
+                    <circle cx="105" cy="155" r="7" fill="#facc15" />
+
+                    <circle cx="135" cy="145" r="16" fill="#ca8a04" />
+                    <circle cx="135" cy="145" r="13" fill="#eab308" />
+                    <circle cx="135" cy="145" r="9" fill="#fef08a" />
+
+                    <circle cx="165" cy="145" r="16" fill="#ca8a04" />
+                    <circle cx="165" cy="145" r="13" fill="#eab308" />
+                    <circle cx="165" cy="145" r="9" fill="#fef08a" />
+
+                    <circle cx="195" cy="155" r="14" fill="#ca8a04" />
+                    <circle cx="195" cy="155" r="11" fill="#eab308" />
+                    <circle cx="195" cy="155" r="7" fill="#facc15" />
+
+                    <circle cx="150" cy="160" r="15" fill="#ca8a04" />
+                    <circle cx="150" cy="160" r="12" fill="#eab308" />
+                    <circle cx="150" cy="160" r="8" fill="#fde047" />
+                </g>
+
+                <!-- 4. El Lazo / Moño elegante amarrado en la parte angosta del cono -->
+                <g>
+                    <!-- Listones laterales del moño -->
+                    <path d="M 135,270 Q 110,290 100,310 Q 130,290 138,275 Z" fill="url(#ribbonGrad)" />
+                    <path d="M 165,270 Q 190,290 200,310 Q 170,290 162,275 Z" fill="url(#ribbonGrad)" />
+                    <!-- Nudo central y orejas del moño -->
+                    <ellipse cx="138" cy="265" rx="14" ry="9" fill="#e11d48" transform="rotate(-15 138 265)" />
+                    <ellipse cx="162" cy="265" rx="14" ry="9" fill="#e11d48" transform="rotate(15 162 265)" />
+                    <circle cx="150" cy="267" r="8" fill="#9f1239" />
+                </g>
+            </svg>
         </div>
 
         <!-- Botón para cerrar la caja nuevamente -->
-        <button onclick="resetGift()" class="mt-8 text-xs text-yellow-400/80 underline hover:text-yellow-300 cursor-pointer transition">
+        <button onclick="resetGift()" class="mt-4 text-xs text-yellow-400/80 underline hover:text-yellow-300 cursor-pointer transition">
             Volver a cerrar la caja
         </button>
     </div>
