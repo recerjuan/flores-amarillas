@@ -1,134 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mi persona favorita 💛</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #31102b 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-            color: #fff;
-        }
-        .romantic-font {
-            font-family: 'Dancing Script', cursive;
-        }
-        /* Animación de apertura de la caja */
-        .box-lid {
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
-            transform-origin: top;
-        }
-        .open-lid .box-lid {
-            transform: translateY(-120px) rotateX(45deg);
-            opacity: 0;
-        }
-        .gift-container {
-            transition: all 0.8s ease-in-out;
-        }
-        .fade-out {
-            opacity: 0;
-            transform: scale(0.8);
-            pointer-events: none;
-            display: none;
-        }
-        .fade-in {
-            animation: fadeInBouquet 1.2s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        @keyframes fadeInBouquet {
-            0% { opacity: 0; transform: translateY(40px) scale(0.9); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para Carol Dayana 💛🎁</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="flex flex-col items-center justify-center p-4">
+<body>
+  <main class="wrap">
+    <section class="card">
+      <h1 class="title">Flores amarillas para ti 💛</h1>
 
-    <!-- VISTA 1: LA CAJA DE REGALO SORPRESA -->
-    <div id="giftView" class="gift-container flex flex-col items-center justify-center text-center cursor-pointer select-none py-10" onclick="openGift()">
-        <div class="mb-6 animate-bounce">
-            <span class="text-6xl">🎁</span>
+      <!-- Caja -->
+      <div class="gift-stage" id="giftStage">
+        <div class="gift" id="gift">
+          <div class="gift-lid" id="giftLid"></div>
+          <div class="gift-box"></div>
+          <div class="gift-ribbon"></div>
+
+          <button class="gift-prompt" id="giftButton" type="button">
+            Toca para abrir
+          </button>
         </div>
-        <h1 class="text-3xl md:text-4xl font-bold text-yellow-300 mb-3 drop-shadow-md">Tienes un regalo especial</h1>
-        <p class="text-yellow-100 text-lg mb-8 bg-yellow-950/60 px-6 py-2 rounded-full shadow-lg border border-yellow-500/30">
-            Haz clic aquí para abrirlo ✨
+      </div>
+
+      <!-- Dedicatoria (oculta al inicio) -->
+      <article class="message" id="message" aria-live="polite">
+        <h2>Para ti, Carol Dayana 💛🌹</h2>
+        <p>
+          Me encantas.<br><br>
+          Tu forma de mirar el mundo convierte la luz en algo especial, y cada detalle contigo se siente como un regalo.<br><br>
+          Hoy te dejo este ramo de <strong>rosas amarillas</strong> porque dicen lo que quiero decirte:
+          <strong>alegría, energía y amor que ilumina</strong>.<br><br>
+          Gracias por ser tú, por tu cariño y por existir en mi vida.<br><br>
+          <strong>Que este detalle te recuerde lo mucho que te pienso… y lo feliz que me haces.</strong>
+        </p>
+        <p class="signature">
+          Con todo mi cariño,<br>
+          <strong>Juan Diego</strong> 💛
         </p>
 
-        <!-- Simulación visual de la caja -->
-        <div class="relative w-48 h-44 md:w-56 md:h-52">
-            <!-- Tapa -->
-            <div class="box-lid absolute top-0 left-[-10px] right-[-10px] h-12 bg-yellow-600 rounded-t-lg shadow-2xl flex items-center justify-center border-b-2 border-yellow-700">
-                <div class="w-8 h-full bg-yellow-300 opacity-90"></div>
-            </div>
-            <!-- Cuerpo de la caja -->
-            <div class="absolute top-12 bottom-0 left-0 right-0 bg-yellow-700 rounded-b-xl shadow-2xl flex items-center justify-center border-2 border-yellow-600 overflow-hidden">
-                <div class="w-10 h-full bg-yellow-400 opacity-90"></div>
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <span class="text-yellow-950 font-bold tracking-wider text-sm bg-yellow-300/90 px-3 py-1 rounded shadow">ÁBREME</span>
-                </div>
-            </div>
+        <div class="flowers" aria-hidden="true">
+          <span>🌼</span>
+          <span>🌹</span>
+          <span>🌻</span>
         </div>
-    </div>
+      </article>
+    </section>
+  </main>
 
-    <!-- VISTA 2: EL RAMO REAL Y PROFESIONAL (Oculto inicialmente) -->
-    <div id="bouquetView" class="fade-out flex flex-col items-center justify-center w-full max-w-md mx-auto text-center py-6">
-        
-        <!-- Dedicatoria Romántica -->
-        <div class="mb-5 bg-slate-900/90 backdrop-blur-md p-5 rounded-2xl shadow-2xl border border-yellow-500/30 w-full">
-            <span class="text-yellow-400 text-2xl">🌻</span>
-            <h2 class="text-yellow-200 font-semibold text-sm mb-1 tracking-wider uppercase">Para mi persona favorita</h2>
-            <p class="romantic-font text-3xl md:text-4xl text-yellow-300 leading-tight drop-shadow">
-                "Mi sol de todos los días, gracias por iluminar cada momento de mi vida con tu sonrisa."
-            </p>
-        </div>
-
-        <!-- Ramo de Rosas Amarillas Real y Elegante -->
-        <div class="relative flex flex-col items-center bg-amber-950/40 p-4 rounded-3xl border border-yellow-500/20 shadow-2xl">
-            <!-- Imagen profesional de un ramo de rosas amarillas con tallos y envoltorio de florería -->
-            <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?q=80&w=600&auto=format&fit=crop" 
-                 alt="Ramo de rosas amarillas" 
-                 class="w-64 h-80 object-cover rounded-2xl shadow-lg border-2 border-yellow-500/40">
-            
-            <div class="mt-3">
-                <span class="bg-yellow-400 text-yellow-950 text-xs font-bold px-4 py-1.5 rounded-full shadow-md uppercase tracking-wider">
-                    Con todo mi amor 💛
-                </span>
-            </div>
-        </div>
-
-        <!-- Botón para cerrar la caja nuevamente -->
-        <button onclick="resetGift()" class="mt-6 text-xs text-yellow-400/80 underline hover:text-yellow-300 cursor-pointer transition">
-            Volver a cerrar la caja
-        </button>
-    </div>
-
-    <script>
-        function openGift() {
-            const giftView = document.getElementById('giftView');
-            const bouquetView = document.getElementById('bouquetView');
-
-            giftView.classList.add('open-lid');
-
-            setTimeout(() => {
-                giftView.classList.add('fade-out');
-                bouquetView.classList.remove('fade-out');
-                bouquetView.classList.add('fade-in');
-            }, 500);
-        }
-
-        function resetGift() {
-            const giftView = document.getElementById('giftView');
-            const bouquetView = document.getElementById('bouquetView');
-
-            bouquetView.classList.remove('fade-in');
-            bouquetView.classList.add('fade-out');
-
-            setTimeout(() => {
-                giftView.classList.remove('fade-out', 'open-lid');
-            }, 300);
-        }
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
